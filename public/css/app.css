@@ -1,0 +1,109 @@
+/*
+    Reset tags
+*/
+html, body {
+    background-color: #fff;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    outline: none !important;
+    margin-bottom: 10px;
+    padding: 0.5em;
+    background-color: white !important;
+    border: 1px solid #707070;
+    border-radius: 100px;
+    width: 100%;
+}
+
+a {
+    color: #EC823A !important;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button {
+    outline: none !important;
+}
+
+/*
+    General style
+*/
+.ict-btn {
+    background-color: #31112C;
+    border: none;
+    padding: 0.5em 2em;
+    min-width: 150px;
+    border-radius: 100px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/*
+    Login Style
+*/
+#login_page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+} 
+
+#login_page .content {
+    width: 350px;
+    padding: 0;
+}
+
+#login_page .content .login-header {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
+#login_page .content .forgot-password {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: right;
+}
+
+#login_page .content p {
+    margin-top: 35px;
+}
+
+/*
+    Sign up Style
+*/
+
+#sign_up_page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+} 
+
+#sign_up_page .content {
+    width: 350px;
+    padding: 0;
+}
+
+#sign_up_page .content .login-header {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
+#sign_up_page .content p {
+    margin-top: 35px;
+}
