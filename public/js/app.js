@@ -1933,31 +1933,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      error: '',
+      error: "",
       form: new Form({
-        email: '',
-        password: ''
+        email: "",
+        password: ""
       })
     };
   },
   methods: {
     login: function login() {
+      var _this = this;
+
       var form = this.form;
 
-      if (form.email == '') {
-        this.error = 'Email is required';
+      if (form.email == "") {
+        this.error = "Email is required";
         return;
       }
 
-      if (form.password == '') {
-        this.error = 'Password is required';
+      if (form.password == "") {
+        this.error = "Password is required";
         return;
       }
 
-      this.error = '';
+      this.error = "";
+      form.post("/login").then(function (response) {
+        var res = response.data;
+
+        if (res.success) {
+          window.location.href = "/landing";
+        } else {
+          _this.error = res.message;
+        }
+      })["catch"](function (err) {
+        console.error(err);
+      });
     }
   }
 });
@@ -1983,17 +1997,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: {}
+    };
+  },
   methods: {
     logout: function logout() {
-      axios.post('/logout').then(function (res) {
+      axios.post("/logout").then(function (res) {
         var data = res.data;
 
         if (data.success) {
-          window.location.href = '/';
+          window.location.href = "/";
         }
       });
+    },
+    loadUserData: function loadUserData() {
+      var _this = this;
+
+      axios.get("/landing/current-user").then(function (response) {
+        _this.user = response.data;
+      });
     }
+  },
+  mounted: function mounted() {
+    this.loadUserData();
   }
 });
 
@@ -21506,34 +21537,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { attrs: { id: "landing_page" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-success",
-        on: {
-          click: function($event) {
-            return _vm.logout()
-          }
-        }
-      },
-      [_vm._v("Logout")]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "content" }, [
       _c("h1", { staticClass: "text-center" }, [_vm._v("Welcome To ICT-002")]),
       _vm._v(" "),
-      _c("h3", { staticClass: "text-center" }, [_vm._v("John Doe")])
+      _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _c("h3", { staticClass: "text-center" }, [
+          _vm._v(
+            _vm._s(_vm.user != {} ? _vm.user.name : "") +
+              ". How can we help you?"
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success ml-3",
+            on: {
+              click: function($event) {
+                return _vm.logout()
+              }
+            }
+          },
+          [_vm._v("Logout")]
+        )
+      ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37266,8 +37297,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\smave\Documents\First Project\ict-002\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\smave\Documents\First Project\ict-002\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\8 Bits\Documents\Coding\Coding\Kunokhar\ICT_002\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\8 Bits\Documents\Coding\Coding\Kunokhar\ICT_002\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

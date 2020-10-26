@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/landing', [HomeController::class, 'index']);
 
-Route::get('/register', function () {
-    return view('welcome');
-});
+Route::get('/landing/current-user', [UserController::class, 'index']);
 
-Route::get('/landing', function () {
-    return view('welcome');
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/**
+ * Only the auth routes we need
+ * Firstly we get the pages using the first and second statement which is why we used a get method
+ * 
+ * 
+ */
+Route::get('/', [Controller::class, 'index']);
+Route::get('/register', [Controller::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
